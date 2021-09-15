@@ -1,0 +1,44 @@
+*{
+    font-family: Courier;
+    font-size: 11pt;
+}
+.chat {
+    width: 30%;
+    height: 90%;
+    left:35%;
+    position: fixed;
+    overflow: scroll;
+    background: lightgray;
+}
+.actions{
+    position: fixed;
+    bottom: 0;
+    width: 30%;
+    display: block;
+}
+.actions input{
+    height: 30px;
+    display: block;
+    width: 100%;
+    outline: 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+.messages div {
+    max-width: 60%;
+    display: block;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 7px;
+}
+.messages .bot{
+    text-align: left;
+    margin-right: auto;
+    background: lightsalmon;
+}
+.messages .self {
+    text-align: right;
+    margin-left: auto;
+    background: #DDD;
+}

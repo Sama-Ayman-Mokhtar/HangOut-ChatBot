@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Hang Out Chatbot</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+      
+    <head>
+    <body>
+        <div class="chat">
+            <div class="messages"></div>
+            <div id ="edge"></div>
+            <form class="actions">
+                <input type="text" placeholder="press 'Enter' to send... ">
+            </form>
+        </div>
+        <script src="{{ url_for('static',filename='event/eventHandler.js') }}"></script>
+
+    </body>     
+       
+</html>
