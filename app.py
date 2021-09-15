@@ -30,7 +30,7 @@ def email_process():
     print("here")
     if request.method == 'POST':
         mess = request.form['mess']
-        botReply = mess + "? ..... I'm still under construction"
+        botReply = mess + "? .. I'm still under construction"
         return jsonify({'reply' : botReply})
 
 if __name__ == "__main__":
