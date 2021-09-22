@@ -1,27 +1,61 @@
 ! version= 2.0
 
-+ hello bot
-- hello human,\n
-^ Would you like to create a new user or login ?
++ [hello | hi | hey | good morning] [bot]
+- hello human would you like to create a new user or login? {topic=root}
 
-+ [*] create [*]
-- what's your name?
+> topic root
+    + [*] (create|new user|create new user) [*]
+    % hello human would you like to create a new user or login
+    - what's your name? {topic=createuser}
 
-+ *
-% what's your name?
-- <set username=<star>> <star1>, what password would you like to set for your account?
+    + [*] login [*]
+    % hello human would you like to create a new user or login
+    - enter username {topic=login}
 
-+ *
-% * what password would you like to set for your account
-- <set userpass=<star>> shall i store this info?
+    + [*] (login|re-login|relogin|re login) [*]
+    % username does not exist would you like to re login or create a new user
+    - enter username {topic=login}
 
-+ [*] [yes|yeah|yea|yep|yup] [*] 
-% shall i store this info
-- <call>adduser <get username> <get userpass></call>
+    + [*] (login|re-login|relogin|re login) [*]
+    % wrong credentials would you like to re login or create a new user
+    - enter username {topic=login}
 
-+ [*] [no|nah|nay|nope] [*] 
-% shall i store this info
-@ hello bot
+    + [*] (create|new user|create new user) [*]
+    % username does not exist would you like to re login or create a new user
+    - what's your name? {topic=createuser}
+
+    + [*] (create|new user|create new user) [*]
+    % wrong credentials would you like to re login or create a new user
+    - what's your name? {topic=createuser}
+> topic
+> topic login
+    + *
+    % enter username
+    - <set testusername=<star>> enter password
+
+    + *
+    % enter password
+    - <set testuserpass=<star>> <call>checkuser <get testusername> <get testuserpass></call> {topic=root}
+< topic
+
+> topic createuser
+
+    + *
+    % what's your name?
+    - <set username=<star>> <star1>, what password would you like to set for your account?
+
+    + *
+    % * what password would you like to set for your account
+    - <set userpass=<star>> shall i store this info?
+
+    + [*] [yes|yeah|yea|yep|yup] [*] 
+    % shall i store this info
+    - <call>adduser <get username> <get userpass></call>
+
+    + [*] [no|nah|nay|nope] [*] 
+    % shall i store this info
+    @ hello bot
+< topic
 
 > object adduser python
     import queries
@@ -35,4 +69,16 @@
         return "couldn't save to database"
 < object
 
-
+> object checkuser python
+    import queries
+    
+    print(args)
+    x = queries.verifyCred(args[:-1],str(args[-1]))
+    queries.printUsersTable()
+    if x == 0:
+        return "username does not exist would you like to re login or create a new user"
+    elif x < 0:
+        return "wrong credentials would you like to re login or create a new user"
+    else:
+        return "you are logged in"
+< object
