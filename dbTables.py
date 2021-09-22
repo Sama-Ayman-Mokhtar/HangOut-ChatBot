@@ -10,9 +10,9 @@ class Users(db.Model):
     password = db.Column(db.String(100), nullable = False)
 
 #every fullSlot has a 'userId', a 'day', a 'startingHour', and an 'endingHour'
-class fullSlots(db.Model):
+class busySlots(db.Model):
     #id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100), primary_key = True)
-    day = db.Column(db.String(10), nullable = False)
-    startingHour = db.Column(db.Integer, nullable = False)
-    endingHour = db.Column(db.Integer, nullable = False)
+    busySlot = db.Column(db.String(10), primary_key = True)
+    #startingHour = db.Column(db.Integer, nullable = False)
+    #endingHour = db.Column(db.Integer, nullable = False)

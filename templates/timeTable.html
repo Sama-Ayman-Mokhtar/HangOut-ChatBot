@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Table</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/styletable.css') }}">
+      
+    <head>
+<body>
+	<h1>TIME TABLE</h1>
+	<table border="5" cellspacing="0" align="center">
+		<!--<caption>Timetable</caption>-->
+		<tr>
+			<th align="center" height="50"
+				width="100"><br>
+				<b>Day/Period</b></br>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>6 a.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>7 a.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>8 a.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>9 a.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>10 a.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>11 a.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>12 p.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>1 p.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>2 p.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>3 p.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>4 p.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>5 p.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>6 p.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>7 p.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>8 p.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>9 p.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>10 p.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>11 p.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>12 a.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>1 a.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>2 a.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>3 a.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>4 a.m.</b>
+			</th>
+			<th align="center" height="50"
+				width="30">
+				<b>5 a.m.</b>
+			</th>
+		</tr>
+		<tr>
+			<th align="center" height="50">
+				<b>Sunday</b>
+			</th>
+			<script type="text/javascript">
+				for (let i = 0; i < 24; i++) {
+					document.write("<td class='cell' onclick='tdclick(this,0,"+i+");' align='center' height='50'></td>");
+				}
+			</script>
+		</tr>
+		<tr>
+			<th align="center" height="50">
+				<b>Monday</b>
+			</th>
+			<script type="text/javascript">
+				for (let i = 0; i < 24; i++) {
+					document.write("<td class='cell' onclick='tdclick(this,1,"+i+");' align='center' height='50'></td>");
+				}
+			</script>
+		</tr>
+		<tr>
+			<th align="center" height="50">
+				<b>Tuesday</b>
+			</th>
+			<script type="text/javascript">
+				for (let i = 0; i < 24; i++) {
+					document.write("<td class='cell' onclick='tdclick(this,2,"+i+");' align='center' height='50'></td>");
+				}
+			</script>
+		</tr>
+		<tr>
+			<th align="center" height="50">
+				<b>Wednesday</b>
+			</th>
+			<script type="text/javascript">
+				for (let i = 0; i < 24; i++) {
+					document.write("<td class='cell' onclick='tdclick(this,3,"+i+");' align='center' height='50'></td>");
+				}
+			</script>
+		</tr>
+		<tr>
+			<th align="center" height="50">
+				<b>Thursday</b>
+			</th>
+			<script type="text/javascript">
+				for (let i = 0; i < 24; i++) {
+					document.write("<td class='cell' onclick='tdclick(this,4,"+i+");' align='center' height='50'></td>");
+				}
+			</script>
+		</tr>
+		<tr>
+			<th align="center" height="50">
+				<b>Friday</b>
+			</th>
+			<script type="text/javascript">
+				for (let i = 0; i < 24; i++) {
+					document.write("<td class='cell' onclick='tdclick(this,5,"+i+");' align='center' height='50'></td>");
+				}
+			</script>
+		</tr>
+		<tr>
+			<th align="center" height="50">
+				<b>Saturday</b>
+			</th>
+			<script type="text/javascript">
+				for (let i = 0; i < 24; i++) {
+					document.write("<td class='cell' onclick='tdclick(this,6,"+i+");' align='center' height='50'></td>");
+				}
+			</script>
+		</tr>
+	</table>
+	<button class="button" onclick="saveTodb();" style="vertical-align:right">
+		<span>Save</span>
+	</button>
+	<script src="{{ url_for('static',filename='event/eventHandler2.js') }}"></script>
+</body>
+
+</html>

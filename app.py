@@ -25,5 +25,30 @@ def email_process():
         botReply = str(rivebBotConfig.bot.reply('localhost',mess))
         return jsonify({'reply' : botReply})
 
+@app.route("/timeTable.html", methods=['GET'])
+def emails():
+    print("heeeeeeeeeeere")
+    return render_template("timeTable.html")
+
+@app.route("/dataBase", methods=['POST'])
+def save():
+    if request.method == 'POST':
+        mess = request.form['mess']
+        print("DATA")
+        print(mess)
+        arr = mess.split(" ")
+        arr = arr[1:]
+        print(arr)
+        import queries
+        queries.printBusySlotsTable()
+        queries.deleteUserSlots()
+        for i in arr:
+            #queries.deleteUserSlots()
+            #queries.printBusySlotsTable()
+            queries.addBusySlot(i)
+            #queries.printBusySlotsTable()
+        queries.printBusySlotsTable()
+        return jsonify({'reply' : 1})
+    
 if __name__ == "__main__":
     app.run(debug = True)

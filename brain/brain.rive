@@ -4,9 +4,17 @@
 - hello human would you like to create a new user or login? {topic=root}
 
 > topic root
+    + [*] (free|free friends|hang out|find) [*]
+    % hello human would you like to create a new user or login
+    - what day of the week? {topic=hangout}
+
     + [*] (create|new user|create new user) [*]
     % hello human would you like to create a new user or login
     - what's your name? {topic=createuser}
+
+    + [*] login [*]
+    % okay saved
+    - enter username {topic=login}
 
     + [*] login [*]
     % hello human would you like to create a new user or login
@@ -27,7 +35,17 @@
     + [*] (create|new user|create new user) [*]
     % wrong credentials would you like to re login or create a new user
     - what's your name? {topic=createuser}
-> topic
+< topic
+> topic hangout
+    + *
+    % what day of the week
+    - <set day=<star>> what hour? 
+
+    + *
+    % what hour
+    - <set hour=<star>> <call>getfreeuser <get day> <get hour></call>
+
+< topic
 > topic login
     + *
     % enter username
@@ -50,7 +68,7 @@
 
     + [*] [yes|yeah|yea|yep|yup] [*] 
     % shall i store this info
-    - <call>adduser <get username> <get userpass></call>
+    - <call>adduser <get username> <get userpass></call> {topic=root}
 
     + [*] [no|nah|nay|nope] [*] 
     % shall i store this info
@@ -81,4 +99,10 @@
         return "wrong credentials would you like to re login or create a new user"
     else:
         return "you are logged in"
+< object
+
+> object getfreeuser python
+    import queries
+    friends = queries.getFreeUsers(args[0],args[1])
+    return friends
 < object
